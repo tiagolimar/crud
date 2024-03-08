@@ -3,9 +3,9 @@ import axios from "axios";
 
 export default function Listar() {
     const [produtos, setProdutos] = useState([
-        { nome: "-", preco: 0 },
-        { nome: "-", preco: 0 },
-        { nome: "-", preco: 0 },
+        { id:0, nome: "-", preco: 0 },
+        { id:0, nome: "-", preco: 0 },
+        { id:0, nome: "-", preco: 0 },
     ]);
 
     useEffect(()=>{
@@ -14,7 +14,7 @@ export default function Listar() {
             setProdutos(dados.data);
         }
         getProdutos();
-    },[])
+    },[]);
 
     return (
         <div className="container">
