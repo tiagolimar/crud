@@ -1,18 +1,20 @@
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function Listar() {
+    const [produtos, setProdutos] = useState([
+        { nome: "-", preco: 0 },
+        { nome: "-", preco: 0 },
+        { nome: "-", preco: 0 },
+    ]);
 
-    const produtos = [
-        { nome: "Goiaba Rosa", preco: 2.15 },
-        { nome: "Abacaxi Verde", preco: 5.50 },
-        { nome: "Manga", preco: 3.75 },
-        { nome: "Laranja", preco: 4.25 },
-        { nome: "Morango", preco: 2.50 },
-        { nome: "Uva", preco: 3.00 },
-        { nome: "Banana", preco: 1.75 },
-        { nome: "Pera", preco: 3.50 },
-        { nome: "Kiwi", preco: 5.00 },
-        { nome: "Limão", preco: 2.25 }
-    ];
+    useEffect(()=>{
+        async function getProdutos(){
+            const dados = await axios.get('http://localhost:5000/listar');
+            setProdutos(dados.data);
+        }
+        getProdutos();
+    },[])
 
     return (
         <div className="container">
