@@ -1,13 +1,25 @@
 import axios from "axios";
+import { Bounce, ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Remover(){
     async function handleSubmit(e){
         e.preventDefault();
         const id = e.target.elements.id.value;
-        console.log(id);
         try {
             const response = await axios.delete(`http://localhost:5000/remover/${id}`);
             console.log(response.data);
+            toast.error('Removido com sucesso!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                transition: Bounce,
+                });
         } catch (error) {
             console.error("Vixe, deu ruim na requisição: ",error);
         }
@@ -19,6 +31,7 @@ export default function Remover(){
                 <input type="number" name="id" placeholder="ID do produto" className="form-control border-black" />
                 <button className="btn btn-dark w-100">Remover</button>
             </form>
+            <ToastContainer />
         </main>
     )
 }
