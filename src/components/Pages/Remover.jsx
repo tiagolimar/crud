@@ -1,8 +1,13 @@
 import axios from "axios";
+import { useContext } from "react";
 import { Bounce, ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { PriceContext } from "../../context/PriceContext";
 
 export default function Remover(){
+    
+    const {getPriceSum} = useContext(PriceContext);
+
     async function handleSubmit(e){
         e.preventDefault();
         const id = e.target.elements.id.value;
@@ -20,6 +25,7 @@ export default function Remover(){
                 theme: "dark",
                 transition: Bounce,
                 });
+            getPriceSum();
         } catch (error) {
             console.error("Vixe, deu ruim na requisição: ",error);
         }

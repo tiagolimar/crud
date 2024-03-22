@@ -1,8 +1,11 @@
 import axios from "axios";
 import { Bounce, ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { PriceContext } from "../../context/PriceContext";
+import { useContext } from "react";
 
 export default function Insert() {
+    const {getPriceSum} = useContext(PriceContext);
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -23,6 +26,7 @@ export default function Insert() {
                 transition: Bounce,
                 });
             console.log(response.data);
+            getPriceSum();
         } catch (error) {
             console.error("Vixe, deu ruim na requisição: ", error);
         }

@@ -1,6 +1,9 @@
-import { useLocation } from 'react-router-dom';
+import { useContext } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { PriceContext } from '../../context/PriceContext'
 
 export default function Navbar() {
+    const {price, getPriceSum} = useContext(PriceContext);
     const location = useLocation();
     const itens = [
         { link: "/", descricao: "Home" },
@@ -14,10 +17,11 @@ export default function Navbar() {
         const active = location.pathname == link ? 'active' : '';
         return (
             <li className="nav-item text-white">
-                <a className={`nav-link ${active}`} aria-current="page" href={link}>{descricao}</a>
+                <Link className={`nav-link ${active}`} aria-current="page" to={link}>{descricao}</Link>
             </li>
         )
     }
+
 
     return (
         <nav className="navbar navbar-expand-lg bg-dark text-white" data-bs-theme="dark">
@@ -29,6 +33,7 @@ export default function Navbar() {
                     )
                 })}
             </ul>
+            <h3 className='me-4'>Valor Total = {price.toLocaleString('pt-BR',{style:'currency', currency:'BRL'})}</h3>
         </nav>
     )
 }
