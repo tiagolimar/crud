@@ -1,14 +1,11 @@
-import { useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { PriceContext } from '../../context/PriceContext'
 
 export default function Navbar() {
-    const {price, getPriceSum} = useContext(PriceContext);
     const location = useLocation();
     const itens = [
         { link: "/", descricao: "Home" },
         { link: "/inserir", descricao: "Inserir" },
-        { link: "/listar", descricao: "Listar" },
+        { link: "/editar", descricao: "Editar" },
         { link: "/remover", descricao: "Remover" },
     ]
     
@@ -22,10 +19,9 @@ export default function Navbar() {
         )
     }
 
-
     return (
         <nav className="navbar navbar-expand-lg bg-dark text-white" data-bs-theme="dark">
-            <a href="/" className="navbar-brand">CRUD</a>
+            <a href="/" className="navbar-brand ms-4">ETY</a>
             <ul className="navbar-nav d-flex flex-row gap-4 me-auto">
                 {itens.map((item, id)=>{
                     return(
@@ -33,7 +29,6 @@ export default function Navbar() {
                     )
                 })}
             </ul>
-            <h3 className='me-4'>Valor Total = {price.toLocaleString('pt-BR',{style:'currency', currency:'BRL'})}</h3>
         </nav>
     )
 }

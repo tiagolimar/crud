@@ -1,12 +1,8 @@
 import axios from "axios";
-import { useContext } from "react";
 import { Bounce, ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import { PriceContext } from "../../context/PriceContext";
 
 export default function Remover(){
-    
-    const {getPriceSum} = useContext(PriceContext);
 
     async function handleSubmit(e){
         e.preventDefault();
@@ -25,7 +21,6 @@ export default function Remover(){
                 theme: "dark",
                 transition: Bounce,
                 });
-            getPriceSum();
         } catch (error) {
             console.error("Vixe, deu ruim na requisição: ",error);
         }
@@ -34,7 +29,7 @@ export default function Remover(){
         <main className="d-flex justify-content-center">
             <form onSubmit={(e)=>handleSubmit(e)} className="d-flex border border-black rounded rounded-4 flex-column gap-3 m-4 p-4 shadow">
                 <h1>Formulário de Remoção</h1>
-                <input type="number" name="id" placeholder="ID do produto" className="form-control border-black" />
+                <input type="number" name="id" placeholder="ID do membro" className="form-control border-black" />
                 <button className="btn btn-dark w-100">Remover</button>
             </form>
             <ToastContainer />

@@ -18,7 +18,7 @@ export default function Listar() {
 
     return (
         <div className="container">
-            <h1 className="text-center mt-4 mb-4">Lista de Produtos</h1>
+            <h1 className="text-center mt-4 mb-4">Membros da ETY</h1>
             <table className="table table-striped border border-black shadow">
                 <thead>
                     <tr>

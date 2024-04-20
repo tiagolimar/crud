@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import App from './App';
-import Home from './components/Pages/Home';
 import Insert from './components/Pages/Insert';
+import Edit from './components/Pages/Edit';
 import List from './components/Pages/Listar';
 import Remover from './components/Pages/Remover';
 
@@ -14,19 +14,19 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    errorElement: <Error />,
+    // errorElement: <Error />,
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: <List />,
       },
       {
         path: "/inserir",
         element: <Insert />,
       },
       {
-        path: "/listar",
-        element: <List />,
+        path: "/editar",
+        element: <Edit />,
       },
       {
         path: "/remover",
