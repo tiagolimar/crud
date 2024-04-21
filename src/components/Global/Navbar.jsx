@@ -4,7 +4,6 @@ export default function Navbar() {
     const location = useLocation();
     const itens = [
         { link: "/", descricao: "Home" },
-        { link: "/inserir", descricao: "Inserir" },
         { link: "/editar", descricao: "Editar" },
         { link: "/remover", descricao: "Remover" },
     ]

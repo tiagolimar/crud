@@ -26,7 +26,7 @@ export default function Remover(){
         }
     }
     return(
-        <main className="d-flex justify-content-center">
+        <main className="d-flex justify-content-center flex-wrap">
             <form onSubmit={(e)=>handleSubmit(e)} className="d-flex border border-black rounded rounded-4 flex-column gap-3 m-4 p-4 shadow">
                 <h1>Formulário de Edição</h1>
                 <input type="number" name="id" placeholder="ID do membro" className="form-control border-black" />
